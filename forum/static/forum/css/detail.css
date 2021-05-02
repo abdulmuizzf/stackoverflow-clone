@@ -1,0 +1,11 @@
+*{
+	width:100%;
+	border: 1px #333 solid;
+	text-align:right;
+	float:right;
+}
+
+.comments{
+	text-align:right;
+	float:right;
+}

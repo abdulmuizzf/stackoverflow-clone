@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clone Overflow</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'forum/index.css' %}">
+</head>
+<body>
+	<h1>Top Questions</h1>
+	{% if question_list %}
+		<ul>
+		{% for q in question_list %}
+			<li>
+				<div class="question-summary">
+					<div>
+						<div><p>{{ q.votes }} Vote{{q.votes|pluralize}}</p></div>
+						<div><p>{{ q.answer_set.count }} Answer{{q.answer_set.count|pluralize}}</p></div>
+						<div><p>{{ q.views }}  View{{q.views|pluralize}}</p></div>
+					</div>
+					<div>
+						<a href="{% url 'forum:detail' q.id %}">
+							<div>
+								<p>{{ q.title }}</p>
+							</div>
+						</a>
+						<div><p>{{ q.timestamp }}</p></div>
+						<div><p>{{ q.author.username }}</p></div>
+					</div>
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No questions available.</p>
+	{% endif %}
+</body>
+</html>
